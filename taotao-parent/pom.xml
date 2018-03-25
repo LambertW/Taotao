@@ -5,7 +5,7 @@
 	<groupId>com.lambertwu</groupId>
 	<artifactId>taotao-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>	
+	<packaging>pom</packaging>
 
 	<!-- 集中定义依赖版本号 -->
 	<properties>
@@ -32,7 +32,11 @@
 		<jedis.version>2.7.2</jedis.version>
 		<solrj.version>4.10.3</solrj.version>
 		<freemarker.version>2.3.23</freemarker.version>
+		<activemq.version>5.11.2</activemq.version>
 		<quartz.version>2.2.2</quartz.version>
+		<dubbo.version>2.5.3</dubbo.version>
+		<zookeeper.version>3.4.7</zookeeper.version>
+		<zkclient.version>0.1</zkclient.version>
 	</properties>
 
 	<dependencyManagement>
@@ -145,6 +149,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
@@ -190,9 +199,30 @@
 				<version>${freemarker.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-all</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.quartz-scheduler</groupId>
 				<artifactId>quartz</artifactId>
 				<version>${quartz.version}</version>
+			</dependency>
+			<!-- Dubbo相关 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -227,7 +257,7 @@
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
+					<version>3.0-r1756463</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
