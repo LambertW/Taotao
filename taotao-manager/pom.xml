@@ -18,6 +18,15 @@
 		<module>taotao-manager-service</module>
 	</modules>
 
+	<!-- 添加依赖 -->
+	<dependencies>
+		<dependency>
+			<groupId>com.lambertwu</groupId>
+			<artifactId>taotao-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
 	<!-- 添加tomcat插件 -->
 	<build>
 		<plugins>
@@ -31,14 +40,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!-- 添加依赖 -->
-	<dependencies>
-		<dependency>
-			<groupId>com.lambertwu</groupId>
-			<artifactId>taotao-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
-
 </project>

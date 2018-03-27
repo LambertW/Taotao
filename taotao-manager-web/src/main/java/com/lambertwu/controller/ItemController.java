@@ -27,4 +27,8 @@ public class ItemController {
 		TbItem tbItem = itemService.getItemById(itemId);
 		return tbItem;
 	}
+	
+//	@RequestMapping("/item/list")
+//	@ResponseBody
+//	public 
 }
