@@ -29,4 +29,7 @@
 	<dubbo:service
 		interface="com.lambertwu.service.ItemService" ref="itemServiceImpl"
 		timeout="300000"></dubbo:service>
+	<dubbo:service
+		interface="com.lambertwu.service.ItemCatService" ref="itemCatServiceImpl"
+		timeout="300000"></dubbo:service>
 </beans>
