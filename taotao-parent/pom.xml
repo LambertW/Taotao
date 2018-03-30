@@ -37,6 +37,7 @@
 		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.7</zookeeper.version>
 		<zkclient.version>0.1</zkclient.version>
+		<fastdfs.version>1.27.0</fastdfs.version>
 	</properties>
 
 	<dependencyManagement>
@@ -225,6 +226,12 @@
 				<artifactId>zkclient</artifactId>
 				<version>${zkclient.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>net.arccode</groupId>
+				<artifactId>fastdfs-client-java</artifactId>
+				<version>${fastdfs.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

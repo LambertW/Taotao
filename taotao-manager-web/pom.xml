@@ -99,6 +99,18 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 添加FastDFS客户端的引用 -->
+		<dependency>
+			<groupId>net.arccode</groupId>
+			<artifactId>fastdfs-client-java</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
