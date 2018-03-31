@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lambertwu.common.utils.JsonUtils;
+
 /**
  * 图片上传
  * 
@@ -29,7 +31,7 @@ public class PictureController {
 
 	@RequestMapping("/pic/upload")
 	@ResponseBody
-	public Map<Object, Object> picUpload(MultipartFile uploadFile) {
+	public String picUpload(MultipartFile uploadFile) {
 		try {
 			// 接收上传的文件
 
@@ -56,7 +58,7 @@ public class PictureController {
 			result.put("error", 0);
 			result.put("url", url);
 			
-			return result;
+			return JsonUtils.objectToJson(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -64,7 +66,7 @@ public class PictureController {
 			result.put("error", 1);
 			result.put("message", "图片上传失败");
 			
-			return result;
+			return JsonUtils.objectToJson(result);
 		}
 	}
 }
