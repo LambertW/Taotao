@@ -26,5 +26,13 @@ public class EasyUITreeNode implements Serializable {
 		this.state = state;
 	}
 	
+	public EasyUITreeNode() {
+		
+	}
 	
+	public EasyUITreeNode(long id, String text, String state) {
+		this.id = id;
+		this.text = text;
+		this.state = state;
+	}
 }

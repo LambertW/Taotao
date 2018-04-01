@@ -29,5 +29,8 @@
 	<dubbo:service
 		interface="com.lambertwu.content.service.ContentCategoryService" ref="contentCategoryServiceImpl"
 		timeout="300000"></dubbo:service>
+	<dubbo:service
+		interface="com.lambertwu.content.service.ContentService" ref="contentServiceImpl"
+		timeout="300000"></dubbo:service>
 	
 </beans>
