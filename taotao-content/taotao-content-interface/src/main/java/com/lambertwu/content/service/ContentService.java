@@ -15,4 +15,6 @@ public interface ContentService {
 	TaotaoResult editContent(TbContent content);
 	
 	TaotaoResult deleteContents(List<Long> ids);
+	
+	List<TbContent> getContentByCid(long cid);
 }

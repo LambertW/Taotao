@@ -69,6 +69,15 @@ public class ContentServiceImpl implements ContentService {
 		
 		return TaotaoResult.ok();
 	}
+
+	@Override
+	public List<TbContent> getContentByCid(long cid) {
+		TbContentExample example = new TbContentExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andCategoryIdEqualTo(cid);
+		List<TbContent> list = contentMapper.selectByExample(example );
+		return list;
+	}
 	
 	
 }
