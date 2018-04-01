@@ -69,4 +69,61 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		return TaotaoResult.ok(contentCategory);
 	}
 
+	@Override
+	public TaotaoResult updateContentCategory(long id, String name) {
+		TbContentCategory category = contentCategoryMapper.selectByPrimaryKey(id);
+		if(category == null) {
+			return new TaotaoResult(404, "无效id", null);
+		}
+		
+		category.setName(name);
+		
+		contentCategoryMapper.updateByPrimaryKey(category);
+		
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult deleteContentCategory(long id) {
+		
+		TbContentCategory category = contentCategoryMapper.selectByPrimaryKey(id);
+		if(category == null) {
+			return new TaotaoResult(404, "无效id", null);
+		}
+		
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		contentCategoryMapper.deleteByPrimaryKey(id);
+		if(!category.getIsParent()) {
+			deleteContentCategoryByParentId(category.getId());
+		}
+		
+		// 更新父节点的IsParent属性
+		example.clear();
+		Criteria criteria = example.createCriteria();
+		criteria.andParentIdEqualTo(category.getParentId());
+		int leafNum = contentCategoryMapper.countByExample(example);
+		if(leafNum <= 0) {
+			TbContentCategory parentCategory = contentCategoryMapper.selectByPrimaryKey(category.getParentId());
+			parentCategory.setIsParent(false);
+			parentCategory.setUpdated(new Date());
+			contentCategoryMapper.updateByPrimaryKey(parentCategory);
+		}
+		
+		return TaotaoResult.ok();
+	}
+
+	private void deleteContentCategoryByParentId(long parentId) {
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		Criteria createCriteria = example.createCriteria();
+		createCriteria.andParentIdEqualTo(parentId);
+		
+		List<TbContentCategory> list = contentCategoryMapper.selectByExample(example);
+		if(list == null || list.isEmpty()) {
+			return;
+		}
+		
+		for (TbContentCategory tbContentCategory : list) {
+			deleteContentCategory(tbContentCategory.getId());
+		}
+	}
 }

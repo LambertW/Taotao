@@ -37,6 +37,13 @@ public class TaotaoResult implements Serializable {
 		this.data = data;
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param status 状态码
+	 * @param msg 消息
+	 * @param data 数据
+	 */
 	public TaotaoResult(Integer status, String msg, Object data) {
 		this.status = status;
 		this.msg = msg;
