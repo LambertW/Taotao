@@ -45,5 +45,6 @@
 		address="127.0.0.1:2181" />
 	<dubbo:reference interface="com.lambertwu.service.ItemService" id="itemService"></dubbo:reference>
 	<dubbo:reference interface="com.lambertwu.service.ItemCatService" id="itemCatService"></dubbo:reference>
+	<dubbo:reference interface="com.lambertwu.content.service.ContentCategoryService" id="contentCategoryService"></dubbo:reference>
 	
 </beans>
