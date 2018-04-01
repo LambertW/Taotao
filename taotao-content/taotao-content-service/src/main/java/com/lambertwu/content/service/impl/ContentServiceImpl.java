@@ -1,6 +1,7 @@
 package com.lambertwu.content.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lambertwu.common.pojo.EasyUIDataGridResult;
+import com.lambertwu.common.pojo.TaotaoResult;
 import com.lambertwu.content.service.ContentService;
 import com.lambertwu.mapper.TbContentMapper;
 import com.lambertwu.pojo.TbContent;
@@ -30,13 +32,42 @@ public class ContentServiceImpl implements ContentService {
 		Criteria criteria = example.createCriteria();
 		criteria.andCategoryIdEqualTo(categoryId);
 		
-		List<TbContent> list = contentMapper.selectByExample(example);
+		List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
 		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
 		EasyUIDataGridResult result = new EasyUIDataGridResult();
 		result.setRows(list);
 		result.setTotal(pageInfo.getTotal());
 		
 		return result;
+	}
+
+	@Override
+	public TaotaoResult addContent(TbContent content) {
+		
+		content.setCreated(new Date());
+		content.setUpdated(new Date());
+		
+		contentMapper.insert(content);
+		
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult editContent(TbContent content) {
+		content.setUpdated(new Date());
+		
+		contentMapper.updateByPrimaryKey(content);
+		
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult deleteContents(List<Long> ids) {
+		for (Long id : ids) {
+			contentMapper.deleteByPrimaryKey(id);
+		}
+		
+		return TaotaoResult.ok();
 	}
 	
 	
