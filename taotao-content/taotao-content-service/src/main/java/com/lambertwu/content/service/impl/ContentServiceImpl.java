@@ -1,6 +1,5 @@
 package com.lambertwu.content.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +18,6 @@ import com.lambertwu.jedis.JedisClient;
 import com.lambertwu.mapper.TbContentMapper;
 import com.lambertwu.pojo.TbContent;
 import com.lambertwu.pojo.TbContentExample;
-import com.lambertwu.pojo.TbItem;
 import com.lambertwu.pojo.TbContentExample.Criteria;
 
 @Service

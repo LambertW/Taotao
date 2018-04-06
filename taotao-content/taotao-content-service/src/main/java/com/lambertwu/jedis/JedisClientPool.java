@@ -1,8 +1,6 @@
 package com.lambertwu.jedis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 

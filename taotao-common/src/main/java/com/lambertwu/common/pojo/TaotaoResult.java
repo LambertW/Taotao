@@ -14,6 +14,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class TaotaoResult implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5754166977603277068L;
+
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	/**

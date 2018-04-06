@@ -11,7 +11,6 @@ import com.github.pagehelper.PageInfo;
 import com.lambertwu.mapper.TbItemMapper;
 import com.lambertwu.pojo.TbItem;
 import com.lambertwu.pojo.TbItemExample;
-import com.lambertwu.pojo.TbItemExample.Criteria;
 
 public class TestPageHelper {
 
@@ -22,7 +21,7 @@ public class TestPageHelper {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-dao.xml");
 		TbItemMapper itemMapper = applicationContext.getBean(TbItemMapper.class);
 		TbItemExample example = new TbItemExample();
-		Criteria criteria = example.createCriteria();
+		//Criteria criteria = example.createCriteria();
 		//criteria.and
 		
 		List<TbItem> list = itemMapper.selectByExample(example);

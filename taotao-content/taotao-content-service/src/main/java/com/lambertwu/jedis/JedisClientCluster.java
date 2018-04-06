@@ -1,7 +1,5 @@
 package com.lambertwu.jedis;
 
-import javax.swing.JInternalFrame.JDesktopIcon;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import redis.clients.jedis.JedisCluster;

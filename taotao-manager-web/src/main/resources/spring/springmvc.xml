@@ -47,5 +47,6 @@
 	<dubbo:reference interface="com.lambertwu.service.ItemCatService" id="itemCatService"></dubbo:reference>
 	<dubbo:reference interface="com.lambertwu.content.service.ContentCategoryService" id="contentCategoryService"></dubbo:reference>
 	<dubbo:reference interface="com.lambertwu.content.service.ContentService" id="contentService"></dubbo:reference>
+	<dubbo:reference interface="com.lambertwu.search.service.SearchItemService" id="searchItemService"></dubbo:reference>
 	
 </beans>

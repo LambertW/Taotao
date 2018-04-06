@@ -6,6 +6,16 @@
 	<artifactId>taotao-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<repositories>
+		<repository>
+			<id>maven repository</id>
+			<url>http://central.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>jboss repository</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+		</repository>
+	</repositories>
 
 	<!-- 集中定义依赖版本号 -->
 	<properties>

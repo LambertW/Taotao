@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TbOrderShipping implements Serializable {
-    private String orderId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8598881786320358667L;
+
+	private String orderId;
 
     private String receiverName;
 

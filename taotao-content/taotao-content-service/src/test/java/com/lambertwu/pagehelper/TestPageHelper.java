@@ -6,14 +6,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lambertwu.mapper.TbContentCategoryMapper;
 import com.lambertwu.mapper.TbContentMapper;
-import com.lambertwu.mapper.TbItemMapper;
 import com.lambertwu.pojo.TbContent;
 import com.lambertwu.pojo.TbContentExample;
-import com.lambertwu.pojo.TbContentExample.Criteria;
 
 public class TestPageHelper {
 
@@ -27,7 +23,7 @@ public class TestPageHelper {
 				"classpath:spring/applicationContext-dao.xml");
 		TbContentMapper itemMapper = applicationContext.getBean(TbContentMapper.class);
 		TbContentExample example = new TbContentExample();
-		Criteria criteria = example.createCriteria();
+		//Criteria criteria = example.createCriteria();
 		// criteria.and
 
 		List<TbContent> list = itemMapper.selectByExample(example);

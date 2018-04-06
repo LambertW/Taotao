@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.lambertwu.common.pojo.EasyUITreeNode;
 import com.lambertwu.common.pojo.TaotaoResult;
-import com.lambertwu.pojo.TbContentCategory;
 
 public interface ContentCategoryService {
 

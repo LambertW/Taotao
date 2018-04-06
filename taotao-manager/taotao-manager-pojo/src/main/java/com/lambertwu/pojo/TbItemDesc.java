@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TbItemDesc implements Serializable {
-    private Long itemId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4986250843240279350L;
+
+	private Long itemId;
 
     private Date created;
 
