@@ -8,6 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>taotao-search-interface</artifactId>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.lambertwu</groupId>
