@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lambertwu.common.pojo.SearchItem;
 import com.lambertwu.common.pojo.TaotaoResult;
@@ -17,6 +18,7 @@ import com.lambertwu.search.service.SearchItemService;
  * @author wgq19
  *
  */
+@Service
 public class SearchItemServiceImpl implements SearchItemService {
 
 	@Autowired
