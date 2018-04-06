@@ -4,24 +4,22 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lambertwu</groupId>
-		<artifactId>taotao-parent</artifactId>
+		<artifactId>taotao-search</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.lambertwu</groupId>
-	<artifactId>taotao-portal-web</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>taotao-search-service</artifactId>
 	<packaging>war</packaging>
 
 	<!-- 依赖管理 -->
 	<dependencies>
 		<dependency>
 			<groupId>com.lambertwu</groupId>
-			<artifactId>taotao-common</artifactId>
+			<artifactId>taotao-manager-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lambertwu</groupId>
-			<artifactId>taotao-content-interface</artifactId>
+			<artifactId>taotao-search-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- Spring -->
@@ -48,27 +46,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
-		<!-- JSP相关 -->
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
+
 		<!-- Dubbo相关 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -92,6 +75,11 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
+		<!-- Redis客户端 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -99,18 +87,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<!-- 配置Tomcat插件 -->
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<configuration>
-					<port>8082</port>
-					<path>/</path>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
