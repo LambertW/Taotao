@@ -15,7 +15,7 @@
 
 	<!-- 配置包扫描器，扫描所有带@Service注解的类 -->
 	<context:component-scan
-		base-package="com.lambertwu.search.service" />
+		base-package="com.lambertwu.search" />
 
 	<!-- 使用dubbo发布服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
@@ -28,6 +28,9 @@
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service
 		interface="com.lambertwu.search.service.SearchItemService" ref="searchItemServiceImpl"
+		timeout="300000"></dubbo:service>
+	<dubbo:service
+		interface="com.lambertwu.search.service.SearchService" ref="searchServiceImpl"
 		timeout="300000"></dubbo:service>
 	
 </beans>
