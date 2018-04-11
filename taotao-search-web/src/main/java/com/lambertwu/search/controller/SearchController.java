@@ -15,27 +15,23 @@ public class SearchController {
 
 	@Autowired
 	private SearchService searchService;
-	
+
 	@Value("${SEARCH_RESULT_ROWS}")
 	private Integer SEARCH_RESULT_ROWS;
-	
+
 	@RequestMapping("/search")
-	public String search(@RequestParam("q")String queryString, 
-			@RequestParam(defaultValue = "1") Integer page,
-			Model model) {
-		try {
-			// 查询条件转码
-			queryString = new String(queryString.getBytes("iso8859-1"), "utf-8");
-			SearchResult searchResult = searchService.search(queryString, page, SEARCH_RESULT_ROWS);
-			model.addAttribute("query", queryString);
-			model.addAttribute("totalPages", searchResult.getTotalPages());
-			model.addAttribute("itemList", searchResult.getItemList());
-			model.addAttribute("page", page);			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+	public String search(@RequestParam("q") String queryString, @RequestParam(defaultValue = "1") Integer page,
+			Model model) throws Exception {
+		long i = 1/0;
+		// 查询条件转码
+		queryString = new String(queryString.getBytes("iso8859-1"), "utf-8");
+		SearchResult searchResult = searchService.search(queryString, page, SEARCH_RESULT_ROWS);
+		model.addAttribute("query", queryString);
+		model.addAttribute("totalPages", searchResult.getTotalPages());
+		model.addAttribute("itemList", searchResult.getItemList());
+		model.addAttribute("page", page);
+
 		return "search";
 	}
-	
+
 }
