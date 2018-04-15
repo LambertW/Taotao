@@ -10,7 +10,9 @@ import javax.jms.Message;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import com.github.pagehelper.PageInfo;
 import com.lambertwu.common.pojo.EasyUIDataGridResult;
 import com.lambertwu.common.pojo.TaotaoResult;
 import com.lambertwu.common.utils.IDUtils;
+import com.lambertwu.common.utils.JsonUtils;
+import com.lambertwu.jedis.JedisClient;
 import com.lambertwu.mapper.TbItemDescMapper;
 import com.lambertwu.mapper.TbItemMapper;
 import com.lambertwu.pojo.TbItem;
@@ -45,9 +49,35 @@ public class ItemServiceImpl implements ItemService {
 	@Resource(name = "itemAddTopic")
 	private Destination destination;
 
+	@Autowired
+	private JedisClient jedisClient;
+	
+	@Value("${ITEM_INFO}")
+	private String ITEM_INFO;
+	@Value("${ITEM_EXPIRE}")
+	private Integer ITEM_EXPIRE;
+	
 	@Override
 	public TbItem getItemById(long itemId) {
+		String key = ITEM_INFO + ":" + itemId + ":BASE";
+		try {
+			String json = jedisClient.get(key);
+			if(StringUtils.isNoneBlank(json)) {
+				TbItem tbItem = JsonUtils.jsonToPojo(json, TbItem.class);
+				return tbItem;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		TbItem item = itemMapper.selectByPrimaryKey(itemId);
+		try {
+			jedisClient.set(key, JsonUtils.objectToJson(item));
+			// 设置过期时间
+			jedisClient.expire(key, ITEM_EXPIRE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return item;
 	}
 
@@ -101,7 +131,27 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public TbItemDesc getItemDescById(long itemId) {
+		String key = ITEM_INFO + ":" + itemId + ":DESC";
+		try {
+			String json = jedisClient.get(key);
+			if(StringUtils.isNoneBlank(json)) {
+				TbItemDesc tbItemDesc = JsonUtils.jsonToPojo(json, TbItemDesc.class);
+				return tbItemDesc;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+		
+		try {
+			jedisClient.set(key, JsonUtils.objectToJson(itemDesc));
+			// 设置过期时间
+			jedisClient.expire(key, ITEM_EXPIRE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return itemDesc;
 	}
 
